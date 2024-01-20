@@ -17,8 +17,8 @@
         state: absent
     - name: Installing zip
       ansible.builtin.get_url:
-      url: https://roboshop-builds.s3.amazonaws.com/web.zip
-      dest: /tmp/web.zip
+        url: https://roboshop-builds.s3.amazonaws.com/web.zip
+        dest: /tmp/web.zip
     - name: Unarchive a file that is already on the remote machine
       ansible.builtin.unarchive:
         src: /usr/share/nginx/html
