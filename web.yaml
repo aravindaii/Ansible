@@ -1,0 +1,19 @@
+- name: Installing Nginx
+  hosts: web
+  become: yes
+  tasks:
+    - name: Install Nginx
+      ansible.builtin.yum:
+        name: Nginx
+        state: installed
+    - name: Enable Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+
+
+
+
+
