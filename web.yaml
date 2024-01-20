@@ -15,6 +15,20 @@
       ansible.builtin.file:
         path: /usr/share/nginx/html/
         state: absent
+    - name: "Download the Image"
+      ansible.builtin.get_url:
+      url: https://roboshop-builds.s3.amazonaws.com/web.zip
+      dest: /tmp/web.zip
+    - name: Unarchive a file that is already on the remote machine
+      ansible.builtin.unarchive:
+        src: /usr/share/nginx/html
+        dest: /tmp/web.zip
+        remote_src: yes
+    - name: Restart Nginx Service
+      systemd:
+        name: nginx
+        state: restarted
+    
 
 
 
