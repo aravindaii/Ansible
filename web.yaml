@@ -13,8 +13,12 @@
         enabled: true
     - name: delete file
       ansible.builtin.file:
-        path: /usr/share/nginx/html/
-        state: absent
+        path: /usr/share/nginx/html
+        state: directory
+    - name: create html directory
+      ansible.builtin.file:
+        path: /usr/share/nginx/html
+        state: directory
     - name: Installing zip
       ansible.builtin.get_url:
         url: https://roboshop-builds.s3.amazonaws.com/web.zip
