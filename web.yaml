@@ -21,9 +21,13 @@
         dest: /tmp/web.zip
     - name: Unarchive a file that is already on the remote machine
       ansible.builtin.unarchive:
-        src: /usr/share/nginx/html/web.zip
-        dest: /tmp/web.zip
+        src: /tmp/web.zip
+        dest: /usr/share/nginx/html/web.zip
         remote_src: yes
+    - name: copy roboshop.conf
+      ansible.builtin.copy:
+        src: roboshop.conf
+        dest: /etc/nginx/default.d/roboshop.conf
     - name: Restart Nginx Service
       systemd:
         name: nginx
