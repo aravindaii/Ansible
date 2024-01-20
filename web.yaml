@@ -21,9 +21,9 @@
         dest: /tmp/web.zip
     - name: Unarchive a file that is already on the remote machine
       ansible.builtin.unarchive:
-        src: /usr/share/nginx/html
+        src: /usr/share/nginx/html/web.zip
         dest: /tmp/web.zip
-        # remote_src: yes
+        remote_src: yes
     - name: Restart Nginx Service
       systemd:
         name: nginx
